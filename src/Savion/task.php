@@ -16,9 +16,9 @@ class task extends PluginTask{
 		if ($this->player instanceof Player){
 			if (in_array($this->player->getName(), $this->getOwner()->voters)){
 				$voters = array_search($this->player->getName(), $this->getOwner()->voters);
-				unset($this->getOwner()->voters[$id]);
+				unset($this->getOwner()->voters[$voters]);
 				$this->getOwner()->no = 0;
-				$this->getOnwer()->yes = 0;
+				$this->getOwner()->yes = 0;
 				
 			}
 		}
