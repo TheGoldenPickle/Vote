@@ -3,3 +3,20 @@ main: Savion\Main
 version: "1.0-BETA"
 api: [1.12.0]
 author: SavionLegendZzz
+commands:
+  vote:
+    description: vote command
+    permission: vote.command.vote
+    default: true
+  newvote:
+    description: vote command
+    permission: vote.command.newvote
+    default: true
+  yes:
+    description: vote command
+    permission: vote.command.yes
+    default: true
+  no:
+    description: vote command
+    permission: vote.command.no
+    default: true
