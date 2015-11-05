@@ -19,6 +19,8 @@ class task extends PluginTask{
 				unset($this->getOwner()->voters[$voters]);
 				$this->getOwner()->no = 0;
 				$this->getOwner()->yes = 0;
+				$this->getOwner()->openVotes = array();
+				
 				
 			}
 		}
