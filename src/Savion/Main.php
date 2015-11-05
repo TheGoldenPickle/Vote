@@ -10,7 +10,9 @@ use pocketmine\command\ConsoleCommandSender;
 class Main extends PluginBase implements Listener{
 
 public $voters = array();
-public $votes = array();
+public $no = 0;
+public $yes = 0;
+public $openVotes = array();
 public $server = $this->getServer();
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this ,$this);
@@ -23,23 +25,66 @@ public function onCommand(CommandSender $sender, Command $cmd, $label, array $ar
  if(strtolower($cmd->getName()) === "vote"){
   if(isset($args[0]) && isset($args[1])){
   $answer = $args[0];
-  $voteid = $args[1];
+  if($answer === null){
+  	$sender->sendMessage("usage: /vote (yes) or (no)");
+  	return false;
+  }
+  
   foreach($this->openVotes as $votes){
-  if($answer === "no" && $voteid === $votes){
+  if($answer === "no"){
   if(in_array($this->voters,$sender->getName()){
   $sender->sendMessage("you voted ".$answer." on ".$votes."!");
+  $this->updateNo();
+  return true;
   }else{
   $sender->sendMessage("there are no open votes!");
+  return false;
+  }
+  }
+  
+  if($answer === "yes"){
+  if(in_array($this->voters,$sender->getName()){
+  $sender->sendMessage("you voted ".$answer." on ".$votes."!");
+  $this->updateYes();
+  return true;
+  }else{
+  $sender->sendMessage("there are no open votes!");
+  return false;
   }
   }
   }
+  
   }
-  }
+  
+ }
+  
    if(strtolower($cmd->getName()) === "newvote"){
+   	if(!in_array($this->voters,$sender->getName())){
    $question = implode(" ", $args);
+   foreach($this->server->getOnlinePlayers() as $onlinep){
    $this->server->broadcastMessage($sender->getName()." made a new vote called ".$question."! use /vote yes or no to choose your vote");
+   $this->addVote($sender,$question);
+  array_push($this->voters,$onlinep);
    }
+   }else{
+   	$sender->sendMessage("There is already an open vote!");
+   	return false;
    }
-   }
-  
-  
+   return true;
+}
+}
+
+public function addVote(Player $p1,$question){
+	$this->openVotes[$p1->getName()]=
+	array("Question"=> $question);
+}
+
+public function updateNo(){
+	$this->no + 1;
+}
+
+public function updateYes(){
+$this->yes + 1;
+}
+
+}
