@@ -65,7 +65,10 @@ public function onCommand(CommandSender $sender, Command $cmd, $label, array $ar
    $this->server->broadcastMessage($sender->getName()." made a new vote called ".$question."! use /vote yes or no to choose your vote");
    $this->addVote($sender,$question);
   array_push($this->voters,$onlinep);
+  $task = new task($this, $onlinep);
+  $this->getServer()->getScheduler()->scheduleDelayedTask($task, 20*60);
    }
+   
    }else{
    	$sender->sendMessage("There is already an open vote!");
    	return false;
