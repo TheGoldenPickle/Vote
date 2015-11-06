@@ -34,7 +34,7 @@ public function onCommand(CommandSender $sender, Command $cmd, $label, array $ar
   
   foreach($this->openVotes as $votes){
   if($answer === "no"){
-  if(in_array($sender->getName(),$this->voters){
+  if(in_array($sender->getName(),$this->voters)){
   $sender->sendMessage("you voted ".$answer." on ".$votes."!");
   $this->updateNo();
   return true;
@@ -45,7 +45,7 @@ public function onCommand(CommandSender $sender, Command $cmd, $label, array $ar
   }
   
   if($answer === "yes"){
-  if(in_array($sender->getName(),$this->voters){
+  if(in_array($sender->getName(),$this->voters)){
   $sender->sendMessage("you voted ".$answer." on ".$votes."!");
   $this->updateYes();
   return true;
