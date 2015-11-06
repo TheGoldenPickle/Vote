@@ -8,15 +8,15 @@ commands:
     description: Vote yes or no!
     permission: vote.command.vote
     default: true
-  newvote:
-    description: Start a vote!
-    permission: vote.command.newvote
-    default: true
-  yes:
-    description: Vote yes!
-    permission: vote.command.yes
-    default: true
-  no:
-    description: Vote no!
-    permission: vote.command.no
-    default: true
+   newvote:
+     description: Start a vote!
+     permission: vote.command.newvote
+     default: true
+    yes:
+      description: Vote yes!
+      permission: vote.command.yes
+      default: true
+     no:
+       description: Vote no!
+       permission: vote.command.no
+       default: true
