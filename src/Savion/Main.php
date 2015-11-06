@@ -16,7 +16,7 @@ public $voters = array();
 public $no = 0;
 public $yes = 0;
 public $openVotes = array();
-public $server = $this->getServer();
+public $server = getServer();
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this ,$this);
 		@mkdir($this->getDataFolder());
