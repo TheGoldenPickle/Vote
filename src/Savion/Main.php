@@ -1,5 +1,7 @@
 <?php
 
+namespace Savion;
+
 use pocketmine\event\Listener;
 use pocketmine\Server;
 use pocketmine\Player;
@@ -7,6 +9,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
+
 class Main extends PluginBase implements Listener{
 
 public $voters = array();
